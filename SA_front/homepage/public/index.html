@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cyborg/bootstrap.min.css">
+    <!-- removed integrity and  crossorigin and using cyborg above  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+    <!-- Now you can start using the built-in Bootstrap classes
+     and JavaScript components in your React app components. -->
+
+  <title>Social Media Sentiment Analysis</title>
+     
+  </head>
+
+  <body>
+      <div id="page-container">
+        <div id="content-wrap">
+    <style>
+      #slide{
+        height: 300px;
+      }
+      </style>
+    
+    
+    <style>
+      
+    
+    </style>
+<style>
+  /* making a container and wrapping the content  combined with a padding 
+  where the footer will reside */
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+  #content-wrap {
+    padding-bottom: 2.5rem;    
+}
+
+  #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+#headingsize
+{
+  font-style:normal;
+  color: #240903;
+  font-size: larger;
+}
+
+    </style>
+  
+
+ <!-- doing the animation stuff    -->
+    <style>
+      
+      .cb-slideshow li span { 
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size:auto;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index:-1;
+    animation: imageAnimation   36s linear infinite 0s; 
+  }
+
+ul{
+
+  list-style-type: none;
+}
+
+
+.cb-slideshow:after { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -0; 
+}
+.cb-slideshow:after { 
+    content: '';
+    background: transparent url(../images/pattern.png) repeat top left; 
+}
+
+.cb-slideshow li div h3 { 
+    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+    font-size: 240px;
+    padding: 0;
+    line-height: 200px; 
+}
+.cb-slideshow li:nth-child(1) span { 
+    background-image:url(A.jpg);
+}
+.cb-slideshow li:nth-child(2) span { 
+    background-image: url(B.jpg);
+    animation-delay: 6s; 
+}
+.cb-slideshow li:nth-child(3) span { 
+    background-image: url(C.jpg);
+    animation-delay: 12s; 
+}
+.cb-slideshow li:nth-child(4) span { 
+    background-image: url(A.jpg);
+    animation-delay: 18s; 
+}
+.cb-slideshow li:nth-child(5) span { 
+    background-image: url(B.jpg);
+    animation-delay: 24s; 
+}
+.cb-slideshow li:nth-child(6) span { 
+    background-image: url(C.jpg);
+    animation-delay: 30s; 
+}
+
+.cb-slideshow li:nth-child(2) div { 
+    animation-delay: 6s; 
+}
+.cb-slideshow li:nth-child(3) div { 
+    animation-delay: 12s; 
+}
+
+.cb-slideshow li:nth-child(4) div { 
+    animation-delay: 18s; 
+}
+.cb-slideshow li:nth-child(5) div { 
+    animation-delay: 24s; 
+}
+.cb-slideshow li:nth-child(6) div { 
+    animation-delay: 30s; 
+} 
+
+@keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 1;
+	    transform: scale(1.05);
+	    animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 1;
+	    transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+
+@media screen and (max-width: 1140px) { 
+    .cb-slideshow li div h3 { font-size: 140px }
+}
+@media screen and (max-width: 600px) { 
+    .cb-slideshow li div h3 { font-size: 80px }
+}
+</style>
+<style>
+</style>
+    <style>
+      .jumbotron {
+        background-color: #240903;
+        color: #ecbebe;
+      }
+        #inner1
+        {
+            color:white;
+                    }
+             #inner2
+             {
+               color:black;
+               font-family:sans-serif;
+             }
+      
+    </style>
+
+<style>
+  .wordc
+     {
+       color: rgb(0, 0, 0);
+       width: 100%;
+       height:auto;
+     }
+     
+</style>
+<style>
+  .newsall
+     {
+       color:white;
+  
+     }
+    
+     
+</style>
+<style>
+.news1{
+background-color:black;
+border-radius: 25px;
+border: 2px solid rgb(47, 0, 255);
+padding: 20px;
+width: 100%;
+height: auto;
+}
+
+
+
+
+
+</style>
+
+<style>
+
+.hot_keywords
+{
+background-color:black;
+border-radius: 25px;
+border: 2px solid rgb(255, 0, 0);
+padding: 20px;
+width: 100%;
+height: auto;
+}
+
+</style>
+<style>
+  #news01
+  {
+background-color:rgb(54, 52, 52);
+border-radius: 25px;
+border: 2px solid rgb(5, 5, 5);
+padding: 20px;
+width: 100%;
+height: auto;
+color: white;
+
+  }
+</style>
+<!-- <style>
+  #masking{
+    color: rgb(0, 0, 0);
+    -webkit-mask-box-image: url(hottopics.png) 0 0 repeat;
+}
+</style> -->
+<style>
+#opinionp
+{
+color: green;
+
+}
+#opinionn
+{
+color:red;
+
+}
+</style>
+<style>
+  /* unvisited link */
+  a:link {
+    color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  }
+  </style>
+
+  <style>
+    #colorbt
+    {
+      
+      color:rgb(255, 255, 255)
+          }
+
+  </style>
+  <style>
+    .bgsteps
+    {
+      background-color:goldenrod;
+      /* width: 100px;; */
+      height: 350px;
+    }
+  </style>
+  <style>
+#step
+{
+  font-size: xx-large;
+  background-color: rgb(255, 255, 255);
+  /* padding: 20px; */
+  color:black;
+  border-radius: 20px;
+}
+
+  </style>
+  <style>
+#stepsfollow
+{
+  color:white;
+  background-color:black;
+}
+
+
+  </style>
+  <style>
+    #newssize
+    {
+      text-align: left;
+      font-size: initial;
+    }
+  </style>
+<style>
+  #hot_topics
+  {
+
+border: 22px solid black;
+padding: 20px;
+width: 100%;
+height: auto;
+  }
+</style>
+
+<style>
+  /* #loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    /* animation: spin 2s linear infinite;
+  } */
+   /* */ */
+  .loader_div{
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  left: 0;
+  right: 0%;
+  z-index: 99;
+  opacity:0.7;
+  display:none;
+  background: lightgrey url('Hot_Topic_logo') center center no-repeat;
+  
+}
+  </style>
+<!-- <style>
+
+#loader {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 10px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 10%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+</style> -->
+<style>
+  .word1{
+  background-color:black;
+  /* border-radius: 25px; */
+  border: 2px solid rgb(17, 0, 255);
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  }
+  
+  </style>
+  
+     
+    <style>
+
+    .contact
+   {
+background-color:black;
+padding: 20px;
+width: 100%;
+height: auto;
+    } 
+
+        </style>
+        <style>
+         
+
+
+        </style>
+    <style>
+  h1{
+color:white;
+font-family:sans-serif;
+  }
+  p
+  {
+    color:whitesmoke;
+    font-family:sans-serif;
+    font-size:larger;
+    text-align:center;
+      }
+h4{
+  color:black; 
+  font-family:sans-serif;
+  }
+  h3{
+    color:white;
+    font-family:sans-serif;
+
+
+  }
+</style>
+
+<style>
+   .wordc
+      {
+        color: rgb(0, 0, 0);
+        width: 100%;
+        height:auto;
+      }
+      
+</style>
+
+<style>
+      .bg-grey {
+        background-color: #f6f6f6;
+      }
+      </style>
+    <style>   
+      .container-fluid {
+        padding: 60px 50px;
+      }
+      </style>
+      <style>   
+        .container-fluid {
+          padding: 60px 50px;
+        }
+        </style>
+   <style>
+   
+    @media screen and (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+      }
+    }
+    </style>
+
+
+<!-- <style>
+
+#mainroot
+{
+  /* overflow: hidden; */
+  /* background-color: #333; */
+  position: fixed; 
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; 
+}
+
+</style> -->
+
+    <div id="root" >
+=
+    </div>
+    <div id="slide" ></div>
+    <div id="third"></div>
+    <div id="fourth"></div>
+</div>
+ </div>
+  </body>
+</html>
