@@ -94,32 +94,16 @@ def code(X):
     WC_dict = Wordlist(PC_noun_words, NC_noun_words, PC_verb_words, NC_verb_words, PC_adj_words, NC_adj_words)
 
     Recent_News = News()
-    # temp = {**Pie_dict,**WC_dict}
-    # data=[temp]
-    # print(temp)
-    #print('Dictionary:\n', temp)
-    #temp= {}
+
     temp={}
-    # temp.append(Pie_dict)
-    # temp.append(WC_dict)
+
     temp["Pie_Chart"] = Pie_dict
     temp["Word_Cloud"] = WC_dict
     temp["News"] = Recent_News
 
-    #data = [temp]
-    #Word_Cloud(Word_Cloud_String)
-    #A = Pie_Plot(PT_df, NT_df, Neut_df, User_word)
-    #print('-----------------------------')
-    #print(type(A))
-    #A = io.BytesIO()
-    
-    #print(type(A))
     
 
     return temp
-
-
-    
 
 
 
